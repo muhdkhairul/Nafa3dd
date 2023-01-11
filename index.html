@@ -1,26 +1,82 @@
 
 <html>
+
+<head>
+  <title>NAFA Openhouse 2023</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="styles.css">
+
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  <!-- we import arjs version without NFT but with marker + location based support -->
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="gesture-detector.js"></script>
+  <script src="gesture-handler.js"></script>
+</head>
   
   
   <body style="margin : 0px; overflow: hidden;">
     
-    <a-scene embedded arjs>
-      
+    <a-scene 
+      embedded 
+      arjs
+      renderer="logarithmicDepthBuffer: true;"
+      vr-mode-ui="enabled: false"
+      gesture-detector
+      id="scene"
+    >
 
-        
-      <a-marker type="pattern" url="https://cdn.glitch.global/b08091d8-2ebd-4277-9f0e-5d160ad8d8bb/nafa3ddgithub.patt?v=1673355723460">
-        <a-entity
-          position="0 0 0"
-          scale="0.015 0.015 0.015"
-          gltf-model="https://cdn.glitch.global/b08091d8-2ebd-4277-9f0e-5d160ad8d8bb/objglb.glb?v=1672994937987"
-        ></a-entity>
-      </a-marker>        
+      <a-assets>
+       <a-asset-item
+         id="objglb"
+         src="https://cdn.glitch.global/b08091d8-2ebd-4277-9f0e-5d160ad8d8bb/nafa3ddlogo.glb?v=1673403137922"
+       >
+       </a-asset-item>
+     </a-assets>     
 
+
+
+     <a-marker 
+       type="pattern" 
+       url="https://cdn.glitch.global/b08091d8-2ebd-4277-9f0e-5d160ad8d8bb/nafa3ddgithub.patt?v=1673355723460"
+       raycaster="objects: .clickable"
+       emitevents="true"
+       cursor="fuse: false; rayOrigin: mouse;"
+       id="markerA"
+     >
+      <a-entity
+          id="obj-model"
+          gltf-model="#objglb"
+          class="clickable"
+          gesture-handler      
+        position="0 0 0"
+        scale="0.015 0.015 0.015"
+      >
+
+      </a-entity>
+
+     </a-marker>
       
-      <a-entity camera></a-entity>
+     <a-entity camera></a-entity>
+
+<style>
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  color: black;
+  text-align: center;
+}
+</style>
+
+<div class="footer">
+  <p>Scan NAFA 3DD qr code</p>
+</div>      
+      
+      
+      
     </a-scene>
+
   </body>
 </html>
