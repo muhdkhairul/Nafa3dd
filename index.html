@@ -1,84 +1,21 @@
 
 <html>
-
-<head>
-  <title>NAFA Openhouse 2023</title>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="stylesheet" href="styles.css">
-
-  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-  <script src="gesture-detector.js"></script>
-  <script src="gesture-handler.js"></script>
-</head>
-  
-  
-  <body style="margin : 0px; overflow: hidden;">
-    
-    <a-scene 
-      embedded 
-      arjs
-      renderer="logarithmicDepthBuffer: true;"
-      vr-mode-ui="enabled: false"
-      gesture-detector
-      id="scene"
-    >
-
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.0/dist/mindar-image-aframe.prod.js"></script>
+  </head>
+  <body>
+    <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.0/examples/image-tracking/assets/card-example/card.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
-       <a-asset-item
-         id="objglb"
-         src="https://cdn.glitch.global/b08091d8-2ebd-4277-9f0e-5d160ad8d8bb/hammer.glb?v=1673498732419"
-       >
-       </a-asset-item>
-     </a-assets>     
+        <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.0/examples/image-tracking/assets/card-example/card.png" />
+        <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.0/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
+      </a-assets>
 
-
-
-     <a-marker 
-       type="pattern" 
-       url="https://cdn.glitch.global/b08091d8-2ebd-4277-9f0e-5d160ad8d8bb/githubtest1.patt?v=1673503062472"
-       raycaster="objects: .clickable"
-       emitevents="true"
-       cursor="fuse: false; rayOrigin: mouse;"
-       id="markerA"
-     >
-      <a-entity
-          id="obj-model"
-          gltf-model="#objglb"
-          class="clickable"
-          gesture-handler      
-        position="0 0 0"
-        scale="0.015 0.015 0.015"
-      >
-
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
       </a-entity>
-
-     </a-marker>
-      
-     <a-entity camera></a-entity>
-
-<style>
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: yellow;
-  color: black;
-  text-align: center;
-}
-</style>
-
-<div class="footer">
-  <p>Nafa Openhouse 2023</p>
-  <p>Place Hammer within screen to view AR hammer</p>
-  <p>Tap and drag to rotate, 2 fingers to zoom</p>
-</div>      
-      
-      
-      
     </a-scene>
-
   </body>
 </html>
