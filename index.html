@@ -9,7 +9,7 @@
   </head>
 
   <body>
-          <a-scene mindar-image="imageTargetSrc: https://cdn.glitch.global/b08091d8-2ebd-4277-9f0e-5d160ad8d8bb/hammermarker.mind?v=1673588572999; maxTrack: 1" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+          <a-scene mindar-image="imageTargetSrc: https://cdn.glitch.global/b08091d8-2ebd-4277-9f0e-5d160ad8d8bb/hammermarker2.mind?v=1673673152635; maxTrack: 1" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
             <a-assets>
               <a-asset-item id="hammerModel" src="https://cdn.glitch.global/b08091d8-2ebd-4277-9f0e-5d160ad8d8bb/hammer.glb?v=1673498732419"></a-asset-item>
             </a-assets>
@@ -17,6 +17,10 @@
             <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
       
             <a-entity mindar-image-target="targetIndex: 0">
+              <a-gltf-model rotation="0 0 0 " position="0 0 0" scale="0.04 0.04 0.04" src="#hammerModel" animation-mixer>
+            </a-entity>
+
+            <a-entity mindar-image-target="targetIndex: 1">
               <a-gltf-model rotation="0 0 0 " position="0 0 0" scale="0.04 0.04 0.04" src="#hammerModel" animation-mixer>
             </a-entity>
 
